@@ -11,7 +11,7 @@
 
     <nav>
       <div class="container">
-        <h1>DTP Attendance Form | Afternoon</h1>
+        <h1>DTP Attendance Form | Afternon</h1>
       </div>
     </nav>
 
