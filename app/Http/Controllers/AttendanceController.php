@@ -20,15 +20,15 @@ class AttendanceController extends Controller
     public function checkDateToView(){
         $currentTime = (int)date("Hi");
         if ($currentTime >= 800 && $currentTime <= 900) {
-        return view('markAttendance');
+         return view('markAttendance');
         } else if ($currentTime >= 1100 && $currentTime <= 1200) {
-        return view('markAttendance');
+         return view('markAttendance');
         } else if ($currentTime >= 1230 && $currentTime <= 1300) {
-        return view('markAttendance');
+           return view('markAttendance');
         } else if ($currentTime >= 1600 && $currentTime <= 1630) {
-        return view('markAttendance');
+          return view('markAttendance');
         } else {
-        return redirect('unavailable');
+          return redirect('unavailable');
         }
     }
 

@@ -14,11 +14,16 @@
     <img src="img/dtp_owl.png" id="owl">
     <h1>Attendance is unavailable!</h1>
     <p class="quote">
-      Check back Later!
-      It's the players with the best team that wins!
+      Check back Later! It's still <b><span id="time"></span></b>
     </p>
     <p>VIVA EL IT SENIOR!</p>
     <p>Kindly exit the page.</p>
   </div>
+
+<script>
+      const currentTime = new Date();
+      document.getElementById("time").innerHTML = currentTime.toLocaleTimeString();
+</script>
+
 </body>
 </html>

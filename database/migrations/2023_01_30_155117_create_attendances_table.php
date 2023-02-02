@@ -20,6 +20,7 @@ class CreateAttendancesTable extends Migration
             $table->string('info_lname');
             $table->string('info_mname');
             $table->string('info_course');
+            $table->string('info_yr_lvl');
             $table->string('date', 10);
             $table->string('time_in', 8);
             $table->string('time_out', 8);

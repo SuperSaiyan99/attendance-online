@@ -27,8 +27,9 @@ Route::get('/unavailable', function(){
 
 });
 
-Route::post('/storeAttendance', [AttendanceController::class], 'storeAttendance')->name('storeAttendance');
+Route::view('/thank-you', 'thank_you');
 
+Route::post('/storeAttendance', [AttendanceController::class], 'storeAttendance')->name('storeAttendance');
 
 Route::get('/', function () {
   $currentTime = date("Hi");
@@ -43,9 +44,11 @@ Route::get('/', function () {
   } else {
   return redirect('unavailable');
   }
-  });
+  })->name("home");
 
 Route::get('{any}', function() {
   abort(404);
 })->where('any', '.*')->name('404');
+
+
 
