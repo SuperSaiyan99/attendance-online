@@ -15,16 +15,17 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->increments('info_id');
-            $table->string('info_sid');
+            $table->integer('info_sid');
             $table->string('info_fname');
             $table->string('info_lname');
             $table->string('info_mname');
             $table->string('info_course');
             $table->string('info_yr_lvl');
             $table->string('date', 10);
-            $table->string('time_in', 8);
-            $table->string('time_out', 8);
-            $table->boolean('sched_type');
+            $table->string('time_in', 15);
+            $table->string('time_out', 15)->nullable();
+            $table->string('sched_type');
+            $table->string('sched_entry');
             $table->timestamps();
         });
     }

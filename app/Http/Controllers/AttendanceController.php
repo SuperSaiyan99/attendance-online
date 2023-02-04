@@ -50,35 +50,47 @@ class AttendanceController extends Controller
      */
     public function storeAttendance(Request $request)
         {
+
+    $currentTime = date("g:i:s a");
+    $currentDate = date("d/m/Y");
+    $attendance = new ModelsAttendance();
+
+    if (!isset($request->middleName)){
+        $attendance->info_mname = "N/A";
+    }
         
-        $currentTime = date('H:i:s');
-        $attendance = new ModelsAttendance();
+        $attendance->info_sid = $request->schoolID;
+        $attendance->info_fname = $request->firstName;
+        $attendance->info_lname = $request->middleName;
+        $attendance->info_mname = $request->lastName;
+        $attendance->info_yr_lvl = $request->exampleRadios;
+        $attendance->info_course = 'IT';
+        $attendance->date = $currentDate;
+        $attendance->time_in = $currentTime;
         
         if (strtotime('08:00:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('09:00:00')) {
-            $attendance->status = 'morning';
-            $attendance->entry = 'time in';
+            $attendance->sched_type = 'morning';
+            $attendance->sched_entry = 'time in';
         } else if (strtotime('11:00:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('11:30:00')) {
-            $attendance->status = 'morning';
-            $attendance->entry = 'time out';
+            $attendance->sched_type = 'morning';
+            $attendance->sched_entry = 'time out';
         } else if (strtotime('12:30:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('13:00:00')) {
-            $attendance->status = 'afternoon';
-            $attendance->entry = 'time in';
+            $attendance->sched_type = 'afternoon';
+            $attendance->sched_entry = 'time in';
         }else if (strtotime('16:00:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('17:00:00')) {
-            $attendance->status = 'afternoon';
-            $attendance->entry = 'time Out';
+            $attendance->sched_type = 'afternoon';
+            $attendance->sched_entry = 'time Out';
         }else{
-            return view('existing');
+            $attendance->sched_type = 'test';
+            $attendance->sched_entry = 'test';
         }
     
-        $attendance->schoolID = $request->schoolID;
-        $attendance->firstName = $request->firstName;
-        $attendance->middleName = $request->middleName;
-        $attendance->lastName = $request->lastName;
-        $attendance->yearLevel = $request->yearLevel;
-        $attendance->course = 'IT';
-        $attendance->time_in = $currentTime;
-        $attendance->save();
-        return redirect()->route('thank_you')->with('success', 'Attendance Record Successfully Added!');
+
+        if ($attendance->save()) {
+            return redirect()->route('thank-you')->with('success', 'Attendance Record Successfully Added!');
+        } else {
+            return view('existing');
+        }
         }
 
     /**

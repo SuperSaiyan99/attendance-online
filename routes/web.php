@@ -20,16 +20,16 @@ use Illuminate\Support\Facades\Date;
 */
 
 
-Route::view('/existing', 'existing');
-
 Route::get('/unavailable', function(){
   return view('unavailable');
 
 });
 
-Route::view('/thank-you', 'thank_you');
+Route::view('/thank-you', 'thank_you')->name('thank-you');
 
-Route::post('/storeAttendance', [AttendanceController::class], 'storeAttendance')->name('storeAttendance');
+
+
+Route::post('/storeAttendance', [AttendanceController::class, 'storeAttendance'])->name('storeAttendance');
 
 Route::get('/', function () {
   $currentTime = date("Hi");
@@ -45,6 +45,11 @@ Route::get('/', function () {
   return redirect('unavailable');
   }
   })->name("home");
+
+  
+  Route::get('/test', function () {
+    return view('Test.markAttendance');
+  });
 
 Route::get('{any}', function() {
   abort(404);

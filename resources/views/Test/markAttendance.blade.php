@@ -69,25 +69,7 @@
       <button type="submit" id="submit" value="post" class="btn btn-primary btn-lg" onclick="foo()">Submit</button>
     </div>
 </form> 
- <script>
-  let date = new Date();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let currentTime = hours + ":" + minutes;
-  var greeting = document.getElementById("greeting");
 
-  console.log(currentTime);
-
-  if (hours >= 8 && hours < 9) {
-    greeting.innerHTML = "Morning In!";
-  } else if (hours == 11 && minutes >= 00 && minutes <= 30) {
-    greeting.innerHTML = "Morning Out!";
-  } else if (hours >= 12 && hours <= 13 && minutes >= 30 && minutes < 60) {
-    greeting.innerHTML = "Afternoon In!";
-  }else if (hours == 16 && minutes >= 00 && minutes <= 30) {
-    greeting.innerHTML = "Afternoon Out!";
-  }
-</script> 
 <script>
   function foo() {
      var IDschool= document.getElementById('IDschool').value;
@@ -97,8 +79,6 @@
 
      if (IDschool === "" || IDfirstName === "" || IDlastName === "" || IDschool.length() < 5){
           alert("Please don't leave the boxes empty.");
-     }else{
-      alert("kaon");
      }
  }
 </script>
