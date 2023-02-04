@@ -69,7 +69,16 @@
       <button type="submit" id="submit" value="post" class="btn btn-primary btn-lg" onclick="foo()">Submit</button>
     </div>
 </form> 
+<script>
+  const input = document.querySelector("#IDschool");
 
+  input.addEventListener("input", function (event) {
+  const value = event.target.value;
+  if (!/^\d+$/.test(value)) {
+    event.target.value = value.slice(0, -1);
+  }
+});
+</script>
 <script>
   function foo() {
      var IDschool= document.getElementById('IDschool').value;

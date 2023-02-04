@@ -51,18 +51,20 @@ class AttendanceController extends Controller
     public function storeAttendance(Request $request)
         {
 
-    $currentTime = date("g:i:s a");
+    try {
+        $currentTime = date("g:i:s a");
     $currentDate = date("d/m/Y");
     $attendance = new ModelsAttendance();
 
     if (!isset($request->middleName)){
         $attendance->info_mname = "N/A";
+    }else{
+        $attendance->info_mname = $request->middleName;
     }
         
         $attendance->info_sid = $request->schoolID;
         $attendance->info_fname = $request->firstName;
-        $attendance->info_lname = $request->middleName;
-        $attendance->info_mname = $request->lastName;
+        $attendance->info_lname = $request->lastName;
         $attendance->info_yr_lvl = $request->exampleRadios;
         $attendance->info_course = 'IT';
         $attendance->date = $currentDate;
@@ -87,10 +89,16 @@ class AttendanceController extends Controller
     
 
         if ($attendance->save()) {
-            return redirect()->route('thank-you')->with('success', 'Attendance Record Successfully Added!');
+            return redirect()->route('thank-you');
         } else {
             return view('existing');
         }
+
+
+    } catch (\Throwable $th) {
+        return view('ErrorPages.Exception')->with('error', $th);
+    }
+    
         }
 
     /**

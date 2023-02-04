@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/ending.css') }}">
   <link rel="icon" type="image/x-icon" href="{{ asset('/img/favicon.ico') }}">
   <title>DTP | Attendance Unavailable</title>
@@ -12,12 +13,17 @@
 <body>
   <div class="grid-container">
     <img src="img/dtp_owl.png" id="owl">
-    <h1>Attendance is unavailable!</h1>
+    <h1>There was an error encountered:</h1>
+
+    @if(session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+@endif
+
     <p class="quote">
       Check back Later! It's still <b><span id="time"></span></b>
     </p>
-    <p>VIVA EL IT SENIOR!</p>
-    <p>Kindly exit the page.</p>
   </div>
 
 <script>

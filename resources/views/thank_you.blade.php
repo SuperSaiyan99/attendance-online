@@ -29,25 +29,8 @@
       document.getElementById("time").innerHTML = currentTime.toLocaleTimeString();
 
   function back() {
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
- 
-  if (hours >= 8 && hours < 9) {
-    window.location.href = '{{ route("home") }}';
-  } else if (hours == 11 && minutes >= 00 && minutes <= 30) {
-    window.location.href = '{{ route("home") }}';
-  } else if (hours >= 12 && hours <= 13 && minutes >= 30 && minutes < 60) {
-    window.location.href = '{{ route("home") }}';
-  }else if (hours == 16 && minutes >= 00 && minutes <= 30) {
     window.location.href = '{{ route("home") }}';
   }
-   else {
-    window.location.href = "{{ url('/unavailable') }}";
-  }
-
-
-}
   </script>
 </body>
 </html>

@@ -32,18 +32,18 @@ Route::view('/thank-you', 'thank_you')->name('thank-you');
 Route::post('/storeAttendance', [AttendanceController::class, 'storeAttendance'])->name('storeAttendance');
 
 Route::get('/', function () {
-  $currentTime = date("Hi");
-  if ($currentTime >= 800 && $currentTime <= 900) {
-  return view('markAttendance');
-  } else if ($currentTime >= 1100 && $currentTime <= 1200) {
-  return view('markAttendance');
-  } else if ($currentTime >= 1230 && $currentTime <= 1300) {
-  return view('markAttendance');
-  } else if ($currentTime >= 1600 && $currentTime <= 1630) {
-  return view('markAttendance');
-  } else {
-  return redirect('unavailable');
-  }
+  $currentTime = date("g:i:s a");
+        if (strtotime('08:00:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('09:00:00')) {
+          return view('markAttendance');
+      } else if (strtotime('11:00:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('11:30:00')) {
+        return view('markAttendance');
+      } else if (strtotime('12:30:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('13:00:00')) {
+        return view('markAttendance');
+      }else if (strtotime('16:00:00') <= strtotime($currentTime) && strtotime($currentTime) <= strtotime('17:00:00')) {
+        return view('markAttendance');
+      }else{
+        return view('unavailable');
+}
   })->name("home");
 
   
@@ -53,7 +53,7 @@ Route::get('/', function () {
 
 Route::get('{any}', function() {
   abort(404);
-})->where('any', '.*')->name('404');
+})->where('any', '.*')->name('ErrorPages.404');
 
 
 
