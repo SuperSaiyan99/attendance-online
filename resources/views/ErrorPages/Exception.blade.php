@@ -15,15 +15,14 @@
     <img src="img/dtp_owl.png" id="owl">
     <h1>There was an error encountered:</h1>
 
-    @if(session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session()->get('error') }}
-        </div>
-@endif
+    @if (isset($error))
+    <div class="alert alert-danger">
+      {{ $error }}
+    </div>
+  @endif
+  
 
-    <p class="quote">
-      Check back Later! It's still <b><span id="time"></span></b>
-    </p>
+
   </div>
 
 <script>

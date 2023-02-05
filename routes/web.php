@@ -20,10 +20,7 @@ use Illuminate\Support\Facades\Date;
 */
 
 
-Route::get('/unavailable', function(){
-  return view('unavailable');
 
-});
 
 Route::view('/thank-you', 'thank_you')->name('thank-you');
 
@@ -46,7 +43,6 @@ Route::get('/', function () {
 }
   })->name("home");
 
-  
   Route::get('/test', function () {
     return view('Test.markAttendance');
   });

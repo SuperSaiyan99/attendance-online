@@ -23,7 +23,7 @@
     @csrf
     <input type="text" placeholder="School ID" id="IDschool" name="schoolID" maxlength = "5"  required/>
       <input type="text" placeholder="First Name" id="IDfirstName" name="firstName" maxlength="35"  required/>
-      <input type="text" placeholder="Middle Name" id="IDmiddleName" name="middleName" maxlength="35" />
+      <input type="text" placeholder="Middle Name (Optional)" id="IDmiddleName" name="middleName" maxlength="35" />
       <input type="text" placeholder="Last Name" id="IDlastName" name="lastName"  maxlength="35" required/>
   </div>
 <!------------ YEAR LEVEL------------->
